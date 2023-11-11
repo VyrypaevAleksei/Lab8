@@ -1,0 +1,68 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <clocale>
+
+struct Employee {
+    int distance_to_home;
+    int taxi_tariff;
+    int taxi_number;
+};
+
+std::string RublesEnding(int number) {
+    int lastDigit = number % 10;
+    if ((number >= 11 && number <= 19) || lastDigit == 0 || (lastDigit >= 5 && lastDigit <= 9)) {
+        return "рублей";
+    }
+    else if (lastDigit == 1) {
+        return "рубль";
+    }
+    else {
+        return "рубля";
+    }
+}
+
+int main() {
+    setlocale(LC_ALL, "Russian");
+
+    int N;
+    std::cout << "Введите количество сотрудников компании (N): ";
+    std::cin >> N;
+
+    std::vector<Employee> employees(N);
+
+    std::cout << "Введите расстояния в километрах для каждого сотрудника:\n";
+    for (int i = 0; i < N; ++i) {
+        std::cout << "Сотрудник " << i + 1 << ": ";
+        std::cin >> employees[i].distance_to_home;
+    }
+
+    std::cout << "Введите тарифы в рублях за проезд одного километра для каждой машины такси:\n";
+    for (int i = 0; i < N; ++i) {
+        std::cout << "Машина такси " << i + 1 << ": ";
+        std::cin >> employees[i].taxi_tariff;
+        employees[i].taxi_number = i + 1;
+    }
+
+    if (!employees.empty()) {
+        std::sort(employees.begin(), employees.end(),
+            [](const Employee& a, const Employee& b) {
+                return static_cast<double>(a.taxi_tariff) / a.distance_to_home <
+                    static_cast<double>(b.taxi_tariff) / b.distance_to_home;
+            });
+
+        std::cout << "\nРаспределение сотрудников по такси для минимальных затрат:\n";
+        for (int i = 0; i < N; ++i) {
+            std::cout << "Сотрудник " << i + 1 << " едет на такси " << employees[i].taxi_number << "\n";
+        }
+
+        int total_cost = 0;
+        for (int i = 0; i < N; ++i) {
+            total_cost += employees[i].distance_to_home * employees[i].taxi_tariff;
+        }
+
+        std::cout << "\nОбщая стоимость: " << total_cost << " " << RublesEnding(total_cost) << "\n";
+    }
+
+    return 0;
+}
