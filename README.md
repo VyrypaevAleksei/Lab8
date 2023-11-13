@@ -21,5 +21,5 @@
 4. В итоге программа вам выдаст распределение сотруднков по машинам для минимальных затрат, а также укажет общую стоимость.
 
 ## Скриншоты тестов
-![1 тест](https://github.com/VyrypaevAleksei/Lab-8/assets/146480799/832013b5-50a4-41ad-8f83-07d5857f9230)
-![2 тест](https://github.com/VyrypaevAleksei/Lab-8/assets/146480799/907bde65-4f6a-4239-8bff-2165f5568f53)
+![2 тест](https://github.com/VyrypaevAleksei/Lab8/assets/146480799/94d484a6-f5bf-4a72-919c-233f9131c459)
+![1 тест](https://github.com/VyrypaevAleksei/Lab8/assets/146480799/f0cd6d8a-8fd7-4193-be65-3ea2ab3015cd)
